@@ -8,7 +8,6 @@ int main (void)
 
     for (i = 0; i<5; i++){
         printf("The %dth number is %d \n", i, a[i]);
-
     }
 
     printf("%d \n", a[100]);

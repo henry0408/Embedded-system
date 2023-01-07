@@ -2,12 +2,20 @@
 
 int main (void)
 {
+    // int i;
+    // for (i = 1; i <= 4; i++){
+    //     printf("%d\n", i);
+    // }
+    // printf("The final value of i is: %d\n", i);
+
     int i;
-    char c;
-    scanf("%d", &i);
-    printf("The number is %d\n", i);
-    scanf(" %c", &c);
-    printf("The char is %c\n", c);
+    for (i = 2; i <= 3; i++){
+        printf("%d\n", i);
+        if (i == 3){
+            break;
+        }
+    }
+    printf("The final value of i is: %d\n", i);
 
     return 0;
 }

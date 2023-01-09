@@ -14,11 +14,11 @@ int main (void)
     int * q;
 
     p = &i;
-    // p = q;
+    p = q;
 
-    printf("%d\n", *p); //输出结果是垃圾值，因为q中的内容是一个垃圾地址；q赋给p之后，p也是垃圾值
+    printf("%d\n", *p); //输出结果是垃圾值（而不是3），因为q中的内容是一个垃圾地址；q赋给p之后，p也是垃圾值
 
-    // printf("%d\n", *q);
+    printf("%d\n", *q);
 
     return 0;
 }

@@ -19,6 +19,7 @@ int main (void)
 
     p = &i;
     *q = p;
+    // *q = *p; //这样写依旧有问题，因为q中依旧是一个垃圾地址，与pointer2.c问题一致
 
     printf("%d\n", *q);
 

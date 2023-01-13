@@ -9,7 +9,6 @@ int main (void)
     int * p = (int *)malloc(sizeof (int)); //sizeof(int)可以替换为任何自己规定的int
     printf("%d\n", *p);
     printf("The size of *p is %d\n", sizeof(*p));
-    *p = 5;
 
     free(p);
 

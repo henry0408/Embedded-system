@@ -6,10 +6,9 @@
 int main (void)
 {
     int a[5]; //静态一维数组
-
     int len;
-
     int * pArr;
+    
     printf("Please enter the length of the array: ");
     scanf("%d", &len);
 
@@ -19,7 +18,6 @@ int main (void)
     *pArr = pArr[0] = a[0]
     *(pArr + 1) = pArr[1] = a[1]
     */
-
 
     return 0;
 }

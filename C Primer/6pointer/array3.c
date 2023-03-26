@@ -16,6 +16,16 @@ void print_all(int *p, int len)
     return;
 }
 
+// void print_all(int **p, int len)
+// {
+//     // 由array2.c可以知道，*p = a[0]， *(p+1) = a[1]
+
+//     for (int i = 0; i< len; i++){
+//         printf("%d\n", **p);
+//     }
+//     return;
+// }
+
 int main (void)
 {
     int a[5] = {1, 2, 3, 4, 5};
@@ -23,6 +33,8 @@ int main (void)
     int b[3][4];
 
     print_all(a, 5); // a的类型为int *
+
+    // printf("%d\n", *a);
 
     return 0;
 }

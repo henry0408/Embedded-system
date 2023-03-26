@@ -18,5 +18,8 @@ int main (void)
     printf("The value of p is %d\n", *p); // 100
 
 
+    free(p);
+    printf("The value of p is %d\n", *p); // 100
+
     return 0;
 }

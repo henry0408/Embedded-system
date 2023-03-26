@@ -1,5 +1,4 @@
 /*动态数组构造2*/
-
 #include <stdio.h>
 #include <malloc.h>
 

@@ -2,11 +2,9 @@
 
 warning: assignment to 'int' from 'int *' makes integer from pointer without a cast
 
-p的类型是：int *
-*q的类型是：int
+p的类型是：int *, *q的类型是：int
 
 导致*q = p时会出错
-
 */
 
 #include <stdio.h>

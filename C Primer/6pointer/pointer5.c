@@ -3,7 +3,6 @@
 
 首先，exchange这个函数不能实现数字互换，然而exchange2这个函数可以实现
 注意的地方在于函数的写法
-
 */
 
 #include <stdio.h>

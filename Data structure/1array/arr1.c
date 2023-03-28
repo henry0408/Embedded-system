@@ -27,16 +27,11 @@ bool delete_arr(struct Arr *pArr, int pos, int * pVal);             //pos从1开始
 
 void reverse_arr(struct Arr *pArr);                     //倒置数组
 
-//int get();
-
 void sort_arr(struct Arr *pArr);
+//int get();
 
 int main (void)
 {
-    // if(append_arr)
-    // {
-    //     printf("Yes\n");
-    // }
     struct Arr arr;
     init_arr(&arr, 6);     //注意：只能传地址
     
@@ -137,7 +132,6 @@ bool append_arr(struct Arr *pArr, int num)
         return true;
     }
 }
-
 
 bool insert_arr(struct Arr *pArr, int pos, int val)     //pos为插入的位置（第pos个index），其他所有元素向后移一位
 {

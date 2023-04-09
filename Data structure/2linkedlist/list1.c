@@ -9,6 +9,14 @@ typedef struct Node
     struct Node *pNext;
 }NODE, *PNODE;
 
+
+PNODE create_list();
+void traverse_list(PNODE pHead);
+bool is_empty(PNODE pHead);
+int length_list(PNODE pHead);
+void sort_list (PNODE pHead);
+
+
 PNODE create_list()             //创建非循环单链表，并将头节点赋给PNODE
 {
     int len;
@@ -94,6 +102,12 @@ int length_list(PNODE pHead)
 
     return cnt;
 }
+
+void sort_list (PNODE pHead)
+{
+     
+}
+
 
 bool insert_list(PNODE pHead, int pos, int val);
 

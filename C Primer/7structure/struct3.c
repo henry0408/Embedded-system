@@ -13,7 +13,7 @@ struct Student
     int age;
     char sex;
     char name[100];
-};
+}; 
 
 //此函数无效
 void InputStudent(struct Student stu)

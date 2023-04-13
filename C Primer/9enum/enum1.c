@@ -14,9 +14,11 @@ enum Weekday
 
 int main (void)
 {
-    enum Weekday day = Wednesday;
+    //enum Weekday day = Wednesday;
+    enum Weekday day;
 
-    printf("%d", day);
+    printf("%d\n", day);
+    printf("%d\n", Wednesday);
 
     return 0;
 }

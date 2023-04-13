@@ -105,8 +105,9 @@ int length_list(PNODE pHead)
 
 void sort_list (PNODE pHead)
 {
-     
+    int len = length_list(pHead);       //先求出链表长度
 }
+
 
 
 bool insert_list(PNODE pHead, int pos, int val);

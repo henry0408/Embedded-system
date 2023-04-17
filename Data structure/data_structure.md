@@ -478,7 +478,6 @@ PNODE create_list()             //创建非循环单链表，并将头节点赋�
 <img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230327195856496.png" alt="image-20230327195856496" style="zoom:40%;" />
 
 ```
-
 //遍历链表，用一个指针p，不断p=p->Next遍历到下一个节点
 void traverse_list(PNODE pHead)
 {
@@ -505,3 +504,32 @@ int main(void)
 }
 ```
 
+
+
+# 6. 栈Stack
+
+先入后出
+
+分类：1.静态栈 2.动态栈
+
+静态栈是连续的，类似数组；动态栈类似链表
+
+<img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230417010912883.png" alt="image-20230417010912883" style="zoom:30%;" />
+
+算法：出栈pop/压栈push
+
+
+
+1. 初始化
+
+   <img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230417010937064.png" alt="image-20230417010937064" style="zoom:33%;" />
+
+2. 入栈
+
+   <img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230417010946614.png" alt="image-20230417010946614" style="zoom:33%;" />
+
+3. 遍历
+
+   <img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230417011004090.png" alt="image-20230417011004090" style="zoom:33%;" />
+
+4. 出栈

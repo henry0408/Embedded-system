@@ -533,3 +533,13 @@ int main(void)
    <img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230417011004090.png" alt="image-20230417011004090" style="zoom:33%;" />
 
 4. 出栈
+
+   <img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230419113518437.png" alt="image-20230419113518437" style="zoom:40%;" />
+
+## 7. 队列Queue
+
+<img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230419113724956.png" alt="image-20230419113724956" style="zoom:40%;" />
+
+<img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230419141655650.png" alt="image-20230419141655650" style="zoom:45%;" />
+
+<img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230419141722658.png" alt="image-20230419141722658" style="zoom:47%;" />

@@ -20,7 +20,9 @@ void pushStack(PSTACK,int);
 
 void traverseStack(PSTACK);
 
-bool pop(PSTACK, int*);      //int保存出栈的元素，bool判断是否出栈成功
+bool empty(PSTACK);
+
+bool popStack(PSTACK, int*);      //int保存出栈的元素，bool判断是否出栈成功
 
 int main()
 {
@@ -28,6 +30,15 @@ int main()
     initStack(&S);
     pushStack(&S, 1);
     pushStack(&S, 2);
+    traverseStack(&S);      //倒序输出
+    int num;
+    if(popStack(&S,&num))
+    {
+        printf("Pop successfully, the value is %d\n",num);
+    }
+    else{
+        printf("Pop unsuccessful\n");
+    }
     traverseStack(&S);      //倒序输出
     return 0;
 }
@@ -70,7 +81,28 @@ void traverseStack(PSTACK pS)
     return;
 }
 
-bool pop(PSTACK pS, int* pVal)
+bool empty(PSTACK pS)
 {
+    if(pS->pBottom == pS->pTop)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool popStack(PSTACK pS, int* pVal)
+{
+    if(empty(pS))
+    {
+        return false;
+    }
+    PNODE r = pS->pTop;
+    *pVal = r->data;
+    pS->pTop = r->pNext;
+    free(r);
+    return true;
 
 }

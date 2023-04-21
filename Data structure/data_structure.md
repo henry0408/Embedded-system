@@ -543,3 +543,13 @@ int main(void)
 <img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230419141655650.png" alt="image-20230419141655650" style="zoom:45%;" />
 
 <img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230419141722658.png" alt="image-20230419141722658" style="zoom:47%;" />
+
+总结：入队时r向后移；出队时f向后移
+
+
+
+判断一个队列为空：f == r
+
+判断一个队列是否满了：
+
+最好的方法是数组中永远空一个元素，如果(r+1)%len == f，说明满了

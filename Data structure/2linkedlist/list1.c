@@ -173,6 +173,7 @@ bool delete_list(PNODE pHead, int pos, int* val)    //删除后把删除的值的地址也记
     PNODE q = p->pNext;
     *val = q->num;
     p->pNext = q->pNext;
+    //free(q);
     q = NULL;
 }       
 

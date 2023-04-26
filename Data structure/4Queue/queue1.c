@@ -29,11 +29,11 @@ int main()
     en_queue(&Q,1);
     en_queue(&Q,2);
     en_queue(&Q,3);
-    printf("There are %d valid numbers.\n",get_valid_length(&Q));
     en_queue(&Q,4);
     en_queue(&Q,5);
     en_queue(&Q,6);
     en_queue(&Q,7);
+    printf("There are %d valid numbers.\n",get_valid_length(&Q));
     traverse_queue(&Q);
 
     int val;

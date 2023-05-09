@@ -828,7 +828,7 @@ int main(int argc, char*argv[])
 		exit(-1);
 	}
 	char buf[50] = "\0";
-	ssize ret;
+	ssize_t ret;
 	while(1)
 	{
 		ret = read(fd, buf, sizeof(buf));
@@ -1163,6 +1163,641 @@ int main(int argc, char*argv[])
 		printf("%s",mych);
 		bzero(mych,sizeof(mych));
 	}
+}
+```
+
+
+
+## 三.  库
+
+### 1. 概念
+
+本质上来说库是一种可执行代码的二进制形式，可以被操作系统载入内存执行。
+
+由于windows和linux的本质不同，因此二者库的二进制是不兼容的。
+
+1）可执行的二进制代码，可被OS载入内存执行
+2）库函数为了实现某个功能而封装起来的API集合//printf(“hello”)
+3）提供统一的编程接口，更加便于应用程序的移植
+
+
+
+### 2. 分类
+
+#### 1）静态库
+
+命名规则： 静态库的名字一般为libxxxx.a，其中xxxx是该库的名称，lib开头 后缀名为.a 例如：libFun.a
+
+制作步骤：
+
+step1: 编写源文件
+
+```
+// add.c
+#include"cal.h"
+int add(int a, int b)
+{
+	return a+b;
+}
+```
+
+```
+// sub.c
+#include"cal.h"
+int sub(int a, int b)
+{
+	return a-b;
+}
+```
+
+step2：做函数声明
+
+```
+// cal.h
+#ifndef CAL_H 
+#define CAL_H 
+
+#include<stdio.h>
+int add(int a, int b);
+int sub(int a, int b);
+#endif
+```
+
+step3：编写main函数
+
+```
+#include "cal.h"
+#include <stdio.h>
+int main()
+{
+	printf("%d\n",add(1,2));
+	printf("%d\n",sub(1,2));
+}
+```
+
+step4：将各个.c 分别生成.o目标文件
+
+```
+gcc -c add.c -o add.o 
+gcc -c  sub.c -o sub.o
+```
+
+step5：把所有的.o文件打包，打包工具是ar
+
+```
+ar crv libfun.a add.o sub.o
+//输出的文件叫做libfun.a
+```
+
+step6：将main.c连接到库
+
+```
+-L 指定库所在的路径(相对main.c 路径)
+-l 指定库名
+
+gcc main.c -L . -lfun -o main.out
+// .表示当前路径
+
+./main.out
+```
+
+
+
+注意：这样之后，哪怕只有一个main.out，其他的文件都删掉，程序也会正常执行
+
+
+
+#### 2）动态库
+
+共享库
+
+命名规则：动态库的名字一般为libxxxx.so.major.minor，lib开头 后缀名为.so xxxx是该库的名称，major是主版本号， minor是副版本号 
+
+制作步骤：
+
+step1: 编写源文件
+
+```
+// add.c
+#include"cal.h"
+int add(int a, int b)
+{
+	return a+b;
+}
+```
+
+```
+// sub.c
+#include"cal.h"
+int sub(int a, int b)
+{
+	return a-b;
+}
+```
+
+step2：做函数声明
+
+```
+// cal.h
+#ifndef CAL_H 
+#define CAL_H 
+
+#include<stdio.h>
+int add(int a, int b);
+int sub(int a, int b);
+#endif
+```
+
+step3：编写main函数
+
+```
+#include "cal.h"
+#include <stdio.h>
+int main()
+{
+	printf("%d\n",add(1,2));
+	printf("%d\n",sub(1,2));
+}
+```
+
+step4：将各个.c 分别生成.o目标文件
+
+```
+gcc -c add.c -o add.o 
+gcc -c  sub.c -o sub.o
+```
+
+step5：把所有的.o文件打包
+
+```
+gcc -shared -fPIC add.o sub.o -o libmyfun.so
+```
+
+生成绿色的（可执行）的libmyfun.so
+
+step6：将main.c连接到库
+
+```
+将main.c 连接到库
+sudo cp libmyfun.so /usr/lib //指定路径也不行 必须放这里
+gcc main.c -lmyfun 
+./a.out
+```
+
+如果删除当前目录的libmyfun.so，程序可以继续运行（因为会自动找 `/usr/lib`目录。
+
+
+
+### 3. 动态库和静态库区别
+
+```
+静态库优点：--以空间换时间
+
+静态库被打包到应用程序中 加载速度快
+
+发布程序无需提供静态库 移植方便
+
+
+缺点：
+
+浪费内存
+
+更新、发布麻烦
+
+ 
+
+动态库：--以时间换空间
+
+优点：
+
+ 可实现进程间资源共享(共享库的好处是，不同的应用程序如果调用相同的库，那么在内存里只需要有一份该共享库的实例
+
+)
+
+ 程序升级简单 
+
+缺点：
+
+加载速度比静态库慢
+
+发布程序需要提供依赖的动态库
+```
+
+
+
+## 四. 缓冲区
+
+什么是缓冲区：
+
+内存空间的一部分，相当于在内存空间预留了一些存储空间，用来缓冲输入/输出的数据，这部分预留的空间就叫做缓冲区，显然缓冲区是具有一定大小的。
+
+
+
+当计算机的高速部件与低速部件通讯时,必须将高速部件的输出暂存到某处,以保证高速部件与低速部件相吻合。通常情况下，就是为了高效的处理我们的cpu和i/o设备之间的交互
+
+
+
+1）用户空间的缓存：
+
+我们的程序中的缓存，就是你想从内核读写的缓存（数组）
+
+2）内核空间的缓存：
+
+每打开一个文件，内核在内核空间中也会开辟一块缓存
+
+
+
+文件IO中的写即是将**用户空间**中的缓存写到**内核空间**的缓存中。
+文件IO中的读即是将**内核空间**的缓存写到**用户空间**中的缓存中。
+
+
+
+3）库缓存：
+
+标准IO的库函数中的缓存
+
+缓冲文件系统（高级磁盘IO）--标准io
+
+非缓冲文件系统（低级磁盘IO）--文件io
+
+### 1. 缓冲区的类型
+
+#### 1.1 行缓冲
+
+遇到回车或写满 会调用系统调用函数
+
+```
+int main()
+{
+	printf("hello");
+	while(1);
+}
+```
+
+这样写不会打印hello
+
+改变方法：加一个\n
+
+```
+int main()
+{
+	printf("hello\n");
+	while(1);
+}
+```
+
+行缓冲遇到回车或者写满才会调用系统函数
+
+
+
+##### 1）强制刷新缓冲区：fflush
+
+```
+ int fflush(FILE *stream);
+
+  功能：刷新io缓存
+```
+
+```
+int main()
+{
+	printf("hello");
+	fflush(stdout);
+	while(1);
+}
+```
+
+stdout, stdin, stderror
+
+
+
+#### 1.2 全缓冲
+
+只有缓存写满 才调用系统调用函数
+
+```
+#include"apue.h"
+
+int main()
+{
+	//打开文件
+	FILE *fp = NULL;
+	while(1)
+	{
+		fp = fopen("first.txt","a");
+		fwrite("hello",5,1,fp); 
+		sleep(1);
+	}
+	return 0;
+}
+```
+
+```
+cat first.txt
+```
+
+会发现first.txt里没有写入
+
+
+
+改正方法1：强刷
+
+```
+#include"apue.h"
+
+int main()
+{
+	//打开文件
+	FILE *fp = NULL;
+	fp = fopen("first.txt","a");
+	while(1)
+	{
+		fwrite("hello",5,1,fp); 
+		fflush(fp);
+		sleep(1);
+	}
+	return 0;
+}
+```
+
+改正方法2：不停开启关闭文件
+
+```
+#include"apue.h"
+
+int main()
+{
+	//打开文件
+	FILE *fp = NULL;
+	while(1)
+	{
+		fp = fopen("first.txt","a");
+		fwrite("hello",5,1,fp); 
+		fclose(fp)
+		sleep(1);
+	}
+	return 0;
+}
+```
+
+#### 1.3 无缓冲
+
+ 不对IO操作进行缓存，对流的读写可以立即操作实际文件
+
+```
+#include<stdio.h>
+
+int main()
+{
+	fwrite("heihei",7,1,stderr);//标准错误输出 是没有缓存区
+	while(1);
+}
+```
+
+
+
+### 2. 文件IO和标准IO的本质区别
+
+1）缓冲区不同：
+
+标准IO在对文件操作时，首先操作缓冲区。等到缓冲区满足一定条件时，才会执行系统调用。
+
+而文件IO不操作任何缓冲区，直接执行系统调用
+
+2）系统开销
+
+标准IO可以减少系统调用的次数，提高系统效率
+
+（执行系统调用时，Linux必须从用户态切换到内核态，处理相应的请求，然后再返回到用户态，如果频繁地执行系统调用会增加系统的开销）
+
+
+
+3）执行效率
+
+采用标准I/O的函数接口 很大程度地减少了系统的调用次数，提高了执行效率
+
+
+
+4）标准IO 一般用来操作普通文件；文件IO既可以操作普通文件也可用于多种类型的文件(管道文件)
+
+<img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230509121147360.png" alt="image-20230509121147360" style="zoom:67%;" />
+
+左侧经过c库函数的是标准IO(fprintf, fwrite,..)；右侧是文件IO(read, write,...)
+
+
+
+## 五. 目录IO
+
+### 1. opendir
+
+```
+ #include <sys/types.h>
+
+#include <dirent.h>
+
+DIR *opendir(const char *name);
+
+功能：打开目录流
+
+参数：要打开的目录 包括路径
+
+返回值：成功返回目录流指针 失败返回NULL 
+```
+
+
+
+### 2. readdir
+
+```
+#include <dirent.h>
+
+struct dirent *readdir(DIR *dirp);
+
+//功能：读取目录 
+
+//返回值：成功struct dirent类型指针 到达结尾或失败返回NULL
+
+struct dirent {
+
+    ino_t      d_ino;    /* inode number */inode编号 文件编号
+
+    off_t      d_off;    /* offset to the next dirent */
+
+    unsigned short d_reclen;   /* length of this record */
+
+    unsigned char  d_type;    /* type of file; not supported by all file system types */
+
+    char      d_name[256]; /* filename */ 文件名
+
+};
+```
+
+
+
+### 3. closedir
+
+```
+#include <sys/types.h>
+
+#include <dirent.h>
+
+int closedir(DIR *dirp);
+
+功能：关闭目录  
+```
+
+
+
+### 练习
+
+打开当前目录并读取所有的文件名，且不显示隐藏文件(..)
+
+```
+int main()
+{
+	DIR *dir = opendir("./");
+	struct dirent * pret = NULL;
+	
+	while(1)
+	{
+		pret = readdir(dir);
+		if(pret == NULL)
+			break;
+		if(pret->d_name[0] = '.')
+			continue;
+		printf("%s  ",pret->d_name)
+	}
+	closedir(dir);
+}
+```
+
+
+
+## 六. 文件属性和文件类型
+
+### 1. 获取文件属性: stat
+
+```
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+int stat(const char *path, struct stat *buf);//stat("a.txt",&s);
+
+//功能：获取path文件属性 将其保存到buf 不能获取链接文件属性
+//返回值：成功0 失败-1
+```
+
+注意，struct stat*buf是可以返回的类型
+
+```
+ struct stat {
+
+​        dev_t   st_dev;   /* ID of device containing file */
+
+​        ino_t   st_ino;   /* inode number */ inode 文件编号
+
+​        mode_t   st_mode;   /* protection */文件操作权限 文件类型
+
+​        nlink_t  st_nlink;  /* number of hard links */
+
+​        uid_t   st_uid;   /* user ID of owner */
+
+​        gid_t   st_gid;   /* group ID of owner */
+
+​        dev_t   st_rdev;   /* device ID (if special file) */
+
+​        off_t   st_size;   /* total size, in bytes */ 文件大小
+
+​        blksize_t st_blksize; /* blocksize for file system I/O */
+
+​        blkcnt_t  st_blocks;  /* number of 512B blocks allocated */
+
+​        time_t   st_atime;  /* time of last access */
+
+​        time_t   st_mtime;  /* time of last modification */
+
+​        time_t   st_ctime;  /* time of last status change */
+
+​      };
+```
+
+
+
+练习：读取一个文件"apue.h"的属性
+
+```
+int main()
+{
+	struct stat s;
+	int ret = stat("apue.h",&s);
+	if(ret < 0)
+	{
+		perror("stat");
+		exit(-1);
+	}
+	printf("%ld\n",s.st_size);
+	return 0;
+}
+```
+
+
+
+### 2. 获取文件类型mode_t   st_mode
+
+在struct stat中，有一个变量是mode_t   st_mode
+
+```
+m代表st_mode 
+
+bool S_ISREG(m)  is it a regular file?  //如果该文件是常规文件 则宏返回真 否则返回假
+
+​      S_ISDIR(m)  directory?  //目录文件
+
+​      S_ISCHR(m)  character device? //字符设备文件
+
+​      S_ISBLK(m)  block device?//块设备文件
+
+​      S_ISFIFO(m) FIFO (named pipe)?//管道
+
+​      S_ISLNK(m)  symbolic link? (Not in POSIX.1-1996.)//软链接文件
+
+​      S_ISSOCK(m) socket? (Not in POSIX.1-1996.)//套接字文件
+```
+
+
+
+### 练习
+
+获取happy文件大小并说明文件类型
+
+```
+int main()
+{
+	struct stat s;
+
+	//获取文件属性
+	int ret = stat("happy",&s);
+	if(ret<0)
+	{
+		perror("stat");
+		exit(-1);
+	}
+
+	//显示文件大小
+	printf("%ld\n",s.st_size);
+	
+	//如果为真 说明是常规文件
+	if(S_ISREG(s.st_mode))
+	{
+		puts("-");
+	}
+	//如果为真 说明是目录文件
+	else if(S_ISDIR(s.st_mode))
+	{
+		puts("d");
+	}
+	return 0;
 }
 ```
 

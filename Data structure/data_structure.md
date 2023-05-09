@@ -536,7 +536,7 @@ int main(void)
 
    <img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230419113518437.png" alt="image-20230419113518437" style="zoom:40%;" />
 
-## 7. 队列Queue
+# 7. 队列Queue
 
 <img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230419113724956.png" alt="image-20230419113724956" style="zoom:40%;" />
 
@@ -556,7 +556,7 @@ int main(void)
 
 
 
-## 8. 哈希表
+# 8. 哈希表
 
 哈希表是一个数组，数组的下标是对应的类别
 
@@ -568,7 +568,7 @@ hash_list[1];		//年龄为一岁的人口数
 
 
 
-## 9. 排序
+# 9. 排序
 
 ### 1）快排
 
@@ -628,13 +628,13 @@ int main()
 
 
 
-## 10. 树
+# 10. 树
 
 深度为k的二叉树，最多有`2^(k)-1`个节点
 
 二叉树第k层最多有`2^(K-1)`个节点
 
-完全二叉树最多有`2^(K-1)`个节点
+深度位k的完全二叉树最少有`2^(K-1)`个节点
 
 
 

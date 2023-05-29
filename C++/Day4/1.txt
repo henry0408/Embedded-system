@@ -1,0 +1,26 @@
+类默认包含的函数：
+
+
+class stu;
+
+stu a;       
+stu b = a; 
+stu c;      
+c = b;   
+
+
+stu& operator= (stu& other)//b
+{
+	this->value = other.value;
+	erturn *this;
+}
+默认=重载，什么存在 ？
+
+c=12;
+stu& operator= (int a)
+{
+	this->value = a;
+	erturn *this;
+}
+
+参数类型来决定  stu& other  默认就不存在

@@ -32,13 +32,14 @@ int main(int argc, char const *argv[])
     int length;
     cout<<"please enter the len"<<endl;
     cin>>length;
+    getchar();
     string str[length];
     for(int i = 0; i<length; i++)
     {
         /* code */
         string s1;
         cout<<"please enter the name"<<endl;
-        cin>>s1;
+        getline(cin,s1);
         str[i] = s1;
     }
 

@@ -4,6 +4,7 @@
         "ostream": "cpp",
         "cstdio": "cpp",
         "ctime": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "typeinfo": "cpp"
     }
 }

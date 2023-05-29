@@ -1,3 +1,5 @@
+/*namespace标识符冲突*/
+
 #include <iostream>
 
 using namespace std;
@@ -5,7 +7,6 @@ using namespace std;
 namespace MyStd
 {
     int age = 18;
-    char name[] = "hangyu";
 }
 
 namespace YourStd
@@ -14,16 +15,13 @@ namespace YourStd
 } // namespace YourStd
 
 using namespace MyStd;
-
-int age = 20;
+using namespace YourStd;
 
 int main(int argc, char const *argv[])
 {
     /* code */
-    int age = 21;
-    cout<< ::age<<endl;         //全局变量
-    cout<< MyStd::age<<endl;
+    
     cout<< YourStd::age<<endl;
-    cout<< age<<endl; 
+    //cout<< age<<endl;     //报错
     return 0;
 }

@@ -1,0 +1,77 @@
+Dependencies for Project 'test', Target 'Test': (DO NOT MODIFY !)
+CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
+F (.\Src\main.c)(0x649CFD66)(--c99 --gnu -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\Inc -I ..\Lib_BSP\inc -I ..\Lib_MCU\inc-I.\RTE\_Test-ID:\Arm\Packs\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529"-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (.\Inc\main.h)(0x649BF2E3)
+I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
+I (..\Lib_MCU\inc\LPC11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\core_cm0.h)(0x4B821678)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (..\Lib_MCU\inc\system_LPC11xx.h)(0x4C74B6C8)
+I (.\Inc\led.h)(0x649A3FCE)
+I (.\Inc\fan.h)(0x649A90E5)
+I (..\Lib_MCU\inc\gpio.h)(0x4E12D0E0)
+I (..\Lib_MCU\inc\ssp.h)(0x4E15226A)
+I (..\Lib_BSP\inc\oled2864.h)(0x4ECA5B2A)
+I (..\Lib_BSP\inc\tools.h)(0x4E12C010)
+I (.\Inc\speaker.h)(0x649CFD52)
+F (.\led.c)(0x649A3CBF)(--c99 --gnu -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\Inc -I ..\Lib_BSP\inc -I ..\Lib_MCU\inc-I.\RTE\_Test-ID:\Arm\Packs\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529"-o .\objects\led.o --omf_browse .\objects\led.crf --depend .\objects\led.d)
+I (.\Inc\led.h)(0x649A3FCE)
+I (..\Lib_MCU\inc\LPC11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\core_cm0.h)(0x4B821678)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (..\Lib_MCU\inc\system_LPC11xx.h)(0x4C74B6C8)
+F (.\fan.c)(0x649A5D12)(--c99 --gnu -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\Inc -I ..\Lib_BSP\inc -I ..\Lib_MCU\inc-I.\RTE\_Test-ID:\Arm\Packs\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529"-o .\objects\fan.o --omf_browse .\objects\fan.crf --depend .\objects\fan.d)
+I (.\Inc\fan.h)(0x649A90E5)
+I (..\Lib_MCU\inc\LPC11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\core_cm0.h)(0x4B821678)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (..\Lib_MCU\inc\system_LPC11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\gpio.h)(0x4E12D0E0)
+F (.\Src\speaker.c)(0x649CFD73)(--c99 --gnu -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\Inc -I ..\Lib_BSP\inc -I ..\Lib_MCU\inc-I.\RTE\_Test-ID:\Arm\Packs\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529"-o .\objects\speaker.o --omf_browse .\objects\speaker.crf --depend .\objects\speaker.d)
+I (.\Inc\speaker.h)(0x649CFD52)
+I (..\Lib_MCU\inc\LPC11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\core_cm0.h)(0x4B821678)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (..\Lib_MCU\inc\system_LPC11xx.h)(0x4C74B6C8)
+F (.\Inc\speaker.h)(0x649CFD52)()
+F (.\DHT11.c)(0x649BF124)(--c99 --gnu -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\Inc -I ..\Lib_BSP\inc -I ..\Lib_MCU\inc-I.\RTE\_Test-ID:\Arm\Packs\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529"-o .\objects\dht11.o --omf_browse .\objects\dht11.crf --depend .\objects\dht11.d)
+I (..\Lib_MCU\inc\lpc11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\core_cm0.h)(0x4B821678)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (..\Lib_MCU\inc\system_LPC11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\gpio.h)(0x4E12D0E0)
+I (..\Lib_BSP\inc\tools.h)(0x4E12C010)
+F (..\Lib_MCU\src\gpio.c)(0x4ECFC2A2)(--c99 --gnu -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\Inc -I ..\Lib_BSP\inc -I ..\Lib_MCU\inc-I.\RTE\_Test-ID:\Arm\Packs\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529"-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
+I (..\Lib_MCU\inc\LPC11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\core_cm0.h)(0x4B821678)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (..\Lib_MCU\inc\system_LPC11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\gpio.h)(0x4E12D0E0)
+F (..\Lib_MCU\src\ssp.c)(0x4E27DD02)(--c99 --gnu -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\Inc -I ..\Lib_BSP\inc -I ..\Lib_MCU\inc-I.\RTE\_Test-ID:\Arm\Packs\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529"-o .\objects\ssp.o --omf_browse .\objects\ssp.crf --depend .\objects\ssp.d)
+I (..\Lib_MCU\inc\LPC11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\core_cm0.h)(0x4B821678)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (..\Lib_MCU\inc\system_LPC11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\gpio.h)(0x4E12D0E0)
+I (..\Lib_MCU\inc\ssp.h)(0x4E15226A)
+F (..\Lib_BSP\src\tools.c)(0x4E12C03A)(--c99 --gnu -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\Inc -I ..\Lib_BSP\inc -I ..\Lib_MCU\inc-I.\RTE\_Test-ID:\Arm\Packs\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529"-o .\objects\tools.o --omf_browse .\objects\tools.crf --depend .\objects\tools.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
+I (..\Lib_MCU\inc\lpc11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\core_cm0.h)(0x4B821678)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (..\Lib_MCU\inc\system_LPC11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\gpio.h)(0x4E12D0E0)
+I (..\Lib_MCU\inc\uart.h)(0x4E1D2630)
+F (..\Lib_BSP\src\oled2864.c)(0x4ECA5B14)(--c99 --gnu -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\Inc -I ..\Lib_BSP\inc -I ..\Lib_MCU\inc-I.\RTE\_Test-ID:\Arm\Packs\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529"-o .\objects\oled2864.o --omf_browse .\objects\oled2864.crf --depend .\objects\oled2864.d)
+I (..\Lib_MCU\inc\lpc11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\core_cm0.h)(0x4B821678)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (..\Lib_MCU\inc\system_LPC11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\gpio.h)(0x4E12D0E0)
+I (..\Lib_MCU\inc\ssp.h)(0x4E15226A)
+F (..\Lib_MCU\src\startup_LPC11xx.s)(0x4DAF9EDA)(--cpu Cortex-M0 -g --apcs=interwork -I.\RTE\_Test-ID:\Arm\Packs\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-ID:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 529"--list .\listings\startup_lpc11xx.lst --xref -o .\objects\startup_lpc11xx.o --depend .\objects\startup_lpc11xx.d)
+F (..\Lib_MCU\src\system_LPC11xx.c)(0x4E0430CA)(--c99 --gnu -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\Inc -I ..\Lib_BSP\inc -I ..\Lib_MCU\inc-I.\RTE\_Test-ID:\Arm\Packs\Keil\LPC1100_DFP\1.4.0\Device\Include\LPC11xx-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="529"-o .\objects\system_lpc11xx.o --omf_browse .\objects\system_lpc11xx.crf --depend .\objects\system_lpc11xx.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9AD218)
+I (..\Lib_MCU\inc\LPC11xx.h)(0x4C74B6C8)
+I (..\Lib_MCU\inc\core_cm0.h)(0x4B821678)
+I (..\Lib_MCU\inc\system_LPC11xx.h)(0x4C74B6C8)

@@ -546,7 +546,9 @@ int main(void)
 
 总结：入队时r向后移；出队时f向后移
 
+<img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230609011006457.png" alt="image-20230609011006457" style="zoom: 50%;" />
 
+<img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230609011024463.png" alt="image-20230609011024463" style="zoom:50%;" />
 
 判断一个队列为空：f == r
 
@@ -638,5 +640,7 @@ int main()
 
 
 
+<img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230609010847759.png" alt="image-20230609010847759" style="zoom:67%;" />
 
+<img src="C:\Users\henry0408\AppData\Roaming\Typora\typora-user-images\image-20230609010903047.png" alt="image-20230609010903047" style="zoom:67%;" />
 

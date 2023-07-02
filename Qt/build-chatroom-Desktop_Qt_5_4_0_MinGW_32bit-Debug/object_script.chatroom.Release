@@ -1,0 +1,13 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\CJsonObject.o
+./release\cJSON.o
+./release\logindialog.o
+./release\registdialog.o
+./release\mysocket.o
+./release\MsgBuilder.o
+./release\moc_mainwindow.o
+./release\moc_logindialog.o
+./release\moc_registdialog.o
+);

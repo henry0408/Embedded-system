@@ -1,0 +1,13 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\CJsonObject.o
+./debug\cJSON.o
+./debug\logindialog.o
+./debug\registdialog.o
+./debug\mysocket.o
+./debug\MsgBuilder.o
+./debug\moc_mainwindow.o
+./debug\moc_logindialog.o
+./debug\moc_registdialog.o
+);

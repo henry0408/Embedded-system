@@ -1,0 +1,14 @@
+.\objects\main.o: Src\main.c
+.\objects\main.o: .\Inc\main.h
+.\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: ..\Lib_MCU\inc\LPC11xx.h
+.\objects\main.o: ..\Lib_MCU\inc\core_cm0.h
+.\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: ..\Lib_MCU\inc\system_LPC11xx.h
+.\objects\main.o: .\Inc\led.h
+.\objects\main.o: .\Inc\fan.h
+.\objects\main.o: ..\Lib_MCU\inc\gpio.h
+.\objects\main.o: ..\Lib_MCU\inc\ssp.h
+.\objects\main.o: ..\Lib_BSP\inc\oled2864.h
+.\objects\main.o: ..\Lib_BSP\inc\tools.h
+.\objects\main.o: .\Inc\speaker.h

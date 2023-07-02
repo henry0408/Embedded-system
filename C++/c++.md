@@ -5158,8 +5158,235 @@ cout << d.B::m_age <<endl;
 cout << d.C::m_age <<endl;
 ```
 
-* D继承了两份A的数据，但其实只需要一份
+* D继承了两份A的数据，但其实只需要一份，资源浪费
+
+
+
+### 31.2 虚继承
+
+为了避免上面所说的菱形继承中的二义性，我们可以利用虚继承。
+
+
+
+利用虚继承，我们可以使得在派生类中只保留一份间接基类的成员。
+
+在继承方式前面加上 virtual 关键字就是虚继承，使得在继承间接共同基类时，只对共同的基类初始化一次。
 
 ```
+class 子类名 : virtual public 父类名
 ```
+
+
+
+```
+#include <iostream>
+
+using namespace std;
+
+class A
+{
+protected:
+	int money;
+public:
+	A(int money):money(money)
+	{
+		cout<<"a create"<<endl;
+	}
+};
+
+class B: virtual public A
+{
+public:
+	B(int money):A(money)
+	{
+		cout<<"b create"<<endl;
+	}
+};
+
+class C: virtual public A
+{
+public:
+	C(int money):A(money)
+	{
+		cout<<"c create"<<endl;
+	}
+};
+
+class D:public B, public C
+{
+public:
+	D(int money):A(money),B(money),C(money)
+	{
+		cout<<"d create"<<endl;
+	}
+    void show()
+    {
+        cout<<money<<endl;
+    }
+};
+
+int main()
+{
+    D d(200);
+    d.show();
+}
+```
+
+输出：
+
+```
+a create
+b create
+c create
+d create
+200
+```
+
+
+
+例子2：
+
+```
+#include <iostream>
+using namespace std;
+class A
+{
+protected:
+    int money;
+public:
+    A(int money):money(money)
+    {
+        cout<<"a create"<<endl;
+    }
+};
+class B : public A
+{
+private:
+    int num;
+public:
+    B(int money,int n):A(money),num(n)
+    {
+        cout<<"b create"<<endl;
+        cout<<"b "<<num<<endl;//10
+        cout<<"b: "<<this->money<<endl;//1
+    }
+};
+
+class C : public A
+{
+public:
+    C(int money):A(money)
+    {
+        cout<<"c create"<<endl;
+        cout<<"c: "<<this->money<<endl;//3
+    }
+};
+class D : public B,public C
+{
+public:
+    D(int m):B(m-1,10),C(m+1)
+    {
+        cout<<C::money<<endl;// 3
+        cout<<"D create"<<endl;
+    }
+};
+
+int main()
+{
+    D d(2);
+    return 0;
+}
+```
+
+输出：
+
+```
+a create
+b create
+b 10
+b: 1
+a create
+c create
+c: 3
+3
+D create
+```
+
+注意，初始化B和C时，都会初始化一边A
+
+
+
+## 虚基类，虚继承，虚函数小结
+
+//虚基类：
+
+​	以virtual继承， 使得在继承间接共同基类时 只对共同的基类初始化一次
+
+在哪初始化：最底层的派生类 初始化列表中，首先初始化虚基类
+
+​	作用：消除二义性
+
+ 
+
+//虚继承：菱形继承
+
+以virtual修饰， 类声明为 我可以共享我的父类，并不以当前类的初始化列表的赋值为准，默认失效的赋值
+
+​	
+
+//虚函数：
+
+​	C++的虚函数主要作用是“运行时多态”，父类中提供虚函数的实现，为子类提供默认的函数实现。
+
+​	子类可以重写父类的虚函数实现子类的功能特殊化。
+
+​	
+
+//父类指针指向子类对象与虚函数实现多态：
+
+​	父类* 指针 = new 子类();
+
+​	Shape* shape = new Rectangle();
+
+​	使用这种方式，父类的指针可以指向自己的所有派生类对象。
+
+​	如果使用这种指针方式，若调用父类普通函数，则调用函数时依然是父类的方法；
+
+​	若调用父类的虚函数，调用函数时调用的是子类重写之后的函数。
+
+
+
+//多态:
+
+​	 1.子类可以重写父类中virtual函数，
+
+​	 2.用父类指向子类的指针或引用可以访问子类中重写的方法：为了将逻辑（类）当做参数进行传递
+
+   3.父类可以调用子类重写的方法
+
+
+
+## 32. 纯虚函数
+
+
+
+## 33. 析构函数的调用顺序
+
+
+
+## 34. 虚析构和纯虚析构
+
+
+
+## 35. 内联函数
+
+
+
+## 36. explicit
+
+
+
+
+
+## 37. 类型转换
 
